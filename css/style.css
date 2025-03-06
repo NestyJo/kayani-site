@@ -6,6 +6,10 @@
     --dark: #14141F;
 }
 
+html {
+    scroll-behavior: smooth;
+  }
+
 .fw-medium {
     font-weight: 600 !important;
 }

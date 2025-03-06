@@ -128,7 +128,7 @@
                     </div> -->
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4">Book</a>
+                <a href="#booking-section" class="btn btn-primary rounded-pill py-2 px-4">Book</a>
             </div>
         </nav>
 
@@ -420,7 +420,7 @@
 
 
     <!-- Booking Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div id="booking-section" class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="booking p-5">
                 <div class="row g-5 align-items-center">
@@ -707,19 +707,17 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        &copy; <a class="border-bottom" href="#">Kayani Safaris</a>, All Right Reserved.
+                        Designed By Uhuru Vision
                     </div>
-                    <div class="col-md-6 text-center text-md-end">
+                    <!-- <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
                             <a href="">Home</a>
                             <a href="">Cookies</a>
                             <a href="">Help</a>
                             <a href="">FQAs</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -785,8 +783,6 @@
             emailjs.send('service_puksp1s', 'template_pboehjt', formData)
                 .then(function(response) {
 
-                   // alert('Booking request sent successfully!');
-
                    document.getElementById('modalBody').innerHTML = 'Booking request sent successfully!';
                     const responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
                     responseModal.show();
@@ -794,8 +790,6 @@
                     console.log('Email sent successfully:', response);
                     document.getElementById('bookingForm').reset();
                 }, function(error) {
-
-                    // alert('There was an error sending your booking request.');
 
                     document.getElementById('modalBody').innerHTML = 'There was an error sending your booking request. Please try again.';
                     const responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
