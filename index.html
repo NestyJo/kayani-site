@@ -7,6 +7,37 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        
+        (function() {
+            emailjs.init('kwFsHzEILufuItfXL'); 
+        })();
+    </script>
+
+<style>
+    #loader {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 1000;
+    }
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 
     <!-- Favicon -->
     <link href="img/kayani-logo.jpg" rel="icon">
@@ -24,6 +55,9 @@
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +82,7 @@
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Victoria Tower,DSM,Tanzania
-</small>
+                    </small>
                     <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+255 624 093 350</small>
                     <small class="text-light"><i class="fa fa-envelope-open me-2"></i>kayaniafricansafaris@gmail.com</small>
                 </div>
@@ -82,7 +116,7 @@
                     <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="service.html" class="nav-item nav-link">Services</a>
                     <a href="package.html" class="nav-item nav-link">Packages</a>
-                    <div class="nav-item dropdown">
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
                             <a href="destination.html" class="dropdown-item">Destination</a>
@@ -91,7 +125,7 @@
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             <a href="404.html" class="dropdown-item">404 Page</a>
                         </div>
-                    </div>
+                    </div> -->
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
                 <a href="" class="btn btn-primary rounded-pill py-2 px-4">Book</a>
@@ -105,7 +139,7 @@
                         <h1 class="display-3 text-white mb-3 animated slideInDown">Enjoy Your Vacation With Us</h1>
                         <p class="fs-4 text-white mb-4 animated slideInDown">Making Travel Easy and Accessible for Everyone Visiting Tanzania</p>
                         <div class="position-relative w-75 mx-auto animated slideInDown">
-                            <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Eg: Thailand">
+                            <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Eg: Kilimanjaro">
                             <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;">Search</button>
                         </div>
                     </div>
@@ -398,39 +432,41 @@
                     </div>
                     <div class="col-md-6">
                         <h1 class="text-white mb-4">Book A Tour</h1>
-                        <form>
+                        <form id="bookingForm">
+                            <!-- Your existing form fields -->
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control bg-transparent" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control bg-transparent" id="name" placeholder="Your Name" required>
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control bg-transparent" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control bg-transparent" id="email" placeholder="Your Email" required>
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                                        <input type="text" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required>
                                         <label for="datetime">Date & Time</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select bg-transparent" id="select1">
-                                            <option value="1">Destination 1</option>
-                                            <option value="2">Destination 2</option>
-                                            <option value="3">Destination 3</option>
+                                        <select class="form-select bg-transparent" id="select1" required>
+                                            <option value="">Choose Area</option>
+                                            <option value="Zanzibar">Zanzibar</option>
+                                            <option value="Serengeti">Serengeti</option>
+                                            <option value="Mkikumi">Mkikumi</option>
                                         </select>
                                         <label for="select1">Destination</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control bg-transparent" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control bg-transparent" placeholder="Special Request" id="message" style="height: 100px" required></textarea>
                                         <label for="message">Special Request</label>
                                     </div>
                                 </div>
@@ -690,6 +726,29 @@
     </div>
     <!-- Footer End -->
 
+    <!-- Loader -->
+    <div id="loader" style="display: none;">
+        <div class="spinner"></div>
+        <p>Submitting...</p>
+    </div>
+
+     <!-- Bootstrap Modal -->
+     <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="responseModalLabel">Booking Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Message will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -708,6 +767,48 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.getElementById('loader').style.display = 'block';
+           
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                datetime: document.getElementById('datetime').value,
+                destination: document.getElementById('select1').value,
+                message: document.getElementById('message').value
+            };
+
+            
+            emailjs.send('service_puksp1s', 'template_pboehjt', formData)
+                .then(function(response) {
+
+                   // alert('Booking request sent successfully!');
+
+                   document.getElementById('modalBody').innerHTML = 'Booking request sent successfully!';
+                    const responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
+                    responseModal.show();
+
+                    console.log('Email sent successfully:', response);
+                    document.getElementById('bookingForm').reset();
+                }, function(error) {
+
+                    // alert('There was an error sending your booking request.');
+
+                    document.getElementById('modalBody').innerHTML = 'There was an error sending your booking request. Please try again.';
+                    const responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
+                    responseModal.show();
+
+                    console.error('Email sending failed:', error);
+                    document.getElementById('bookingForm').reset();
+                }) 
+                .finally(function() {
+                    document.getElementById('loader').style.display = 'none';
+            });
+        });
+    </script>
 </body>
 
 </html>
